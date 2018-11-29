@@ -1,5 +1,10 @@
 'use strict'
-var BuiltInEmitter = require('events').EventEmitter
+var BuiltInEmitter;
+try {
+  BuiltInEmitter = require('react-native').EventEmitter
+}catch(e){
+  BuiltInEmitter = require('events').EventEmitter
+}
 
 module.exports = function (CustomEmitter) {
   var Emitter = CustomEmitter || BuiltInEmitter
